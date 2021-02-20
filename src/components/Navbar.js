@@ -1,20 +1,20 @@
 import React from "react";
-
+import {Link} from 'react-router-dom';
 const Navbar = () => {
     return(
         <nav>
             <ul className="left">
-                <li><a href="">IndiaExpress</a></li>
+                <li><Link to="/">IndiaExpress</Link></li>
             </ul>
             <ul className="right">
                 <li>
-                    <a href="">
+                    <Link to="cart">
                         <span className="shopingCart">
                             <i className="fas fa-cart-plus"></i>
                             <span className="cartCount">0</span>
                         </span>
 
-                    </a>
+                    </Link>
                 </li>
             </ul>
         </nav>
