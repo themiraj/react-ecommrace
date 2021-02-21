@@ -22,10 +22,10 @@ export  const CartReducer = (state,action) =>{
                 product = action.cart;
                 product.qty = product.qty + 1;
                 updatedPrice = totalPrice + product.price;
-                // updatedQty = qty + product.qty;
+                updatedQty = product.qty;
                 index = shopingCart.findIndex(cart => cart.id === action.id);
                 shopingCart[index] = product;
-                return {shopingCart:[...shopingCart],totalPrice:updatedPrice}
+                return {shopingCart:[...shopingCart],totalPrice:updatedPrice,qty:updatedQty}
             default:
                 return state;
     }
