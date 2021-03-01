@@ -15,7 +15,7 @@ const  Cart = () => {
                             <span className="cart-product-price">${cart.price}.00</span>
                             <span className="inc" onClick={() => dispatch({type:'INC',id:cart.id,cart})}><i className="fas fa-plus"></i></span>
                             <span className="product-quantity">{cart.qty}</span>   
-                            <span className="dec"><i className="fas fa-minus"></i></span>
+                            <span className="dec" onClick={() => dispatch({type:'DEC',id:cart.id,cart})}><i className="fas fa-minus"></i></span>
                             <span className="product-total-price">${cart.price * cart.qty}</span>
                             <span className="delete-product"><i className="fas fa-trash-alt"></i></span> 
                         </div>
