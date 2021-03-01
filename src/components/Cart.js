@@ -1,8 +1,12 @@
 import React,{useContext} from "react";
 import {CartContext} from "../Global/CartContext";
+import StripeCheckout from "react-stripe-checkout";
 import Products from "./Products";
 const  Cart = () => {
     const {shopingCart,totalPrice,qty,dispatch} = useContext(CartContext);
+    const handleToken = (token) => {
+
+    }
     console.log(shopingCart)
     return(
         <div className="cart-container">
@@ -17,11 +21,37 @@ const  Cart = () => {
                             <span className="product-quantity">{cart.qty}</span>   
                             <span className="dec" onClick={() => dispatch({type:'DEC',id:cart.id,cart})}><i className="fas fa-minus"></i></span>
                             <span className="product-total-price">${cart.price * cart.qty}</span>
-                            <span className="delete-product"><i className="fas fa-trash-alt"></i></span> 
+                            <span className="delete-product" onClick={()=> dispatch({type:'DELETE',id:cart.id, cart})}><i className="fas fa-trash-alt"></i></span> 
                         </div>
                     ))
                 :'Sorry your cart is empty'}
             </div> 
+            {shopingCart.length > 0 ? 
+                <div className="cart-summary">
+                    <div className="summary">
+                        <h3>Cart Summary</h3>
+                        <div className="total-item">
+                            <div  className="items">Total Item</div>
+                            <div className="item-count">{qty}</div>
+                        </div>
+                        <div className="total-price-section">
+                            <div className="just-title">Total Price</div>
+                            <div  className="item-price">${totalPrice}.00</div>
+                        </div>
+                        <div  className="stripe-button">
+                            <StripeCheckout
+                                stripeKey="pk_test_51HafAWAT5LLTROXbf1tiSBHidN7cWkQfvoSpo9GsOUchvAevblbK8ftOOrKqUlhixMnFh3tumH6zraAdelSwWqCF00ppKydIyl"
+                                token={handleToken}
+                                billingAddress
+                                shippingAddress
+                                amount={totalPrice * 100}
+                                name="All products"
+                            >
+                            </StripeCheckout>        
+                        </div>
+                    </div>
+                </div>
+            :'sdsdsdsdsd'}
         </div>
     )
 }
