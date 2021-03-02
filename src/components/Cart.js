@@ -5,7 +5,7 @@ import Products from "./Products";
 const  Cart = () => {
     const {shopingCart,totalPrice,qty,dispatch} = useContext(CartContext);
     const handleToken = (token) => {
-
+        console.log(token);
     }
     console.log(shopingCart)
     return(
@@ -41,7 +41,7 @@ const  Cart = () => {
                         <div  className="stripe-button">
                             <StripeCheckout
                                 stripeKey="pk_test_51HafAWAT5LLTROXbf1tiSBHidN7cWkQfvoSpo9GsOUchvAevblbK8ftOOrKqUlhixMnFh3tumH6zraAdelSwWqCF00ppKydIyl"
-                                token={handleToken}
+                                // token={handleToken}
                                 billingAddress
                                 shippingAddress
                                 amount={totalPrice * 100}
