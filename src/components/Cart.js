@@ -2,12 +2,12 @@ import React,{useContext} from "react";
 import {CartContext} from "../Global/CartContext";
 import StripeCheckout from "react-stripe-checkout";
 import Products from "./Products";
+import axios from "axios";
 const  Cart = () => {
     const {shopingCart,totalPrice,qty,dispatch} = useContext(CartContext);
-    const handleToken = (token) => {
+    const onToken = (token) => {
         console.log(token);
     }
-    console.log(shopingCart)
     return(
         <div className="cart-container">
             <div className="cart-details" style={{marginTop:'100px'}}>
@@ -39,15 +39,26 @@ const  Cart = () => {
                             <div  className="item-price">${totalPrice}.00</div>
                         </div>
                         <div  className="stripe-button">
-                            <StripeCheckout
+                        <StripeCheckout
+                            token={onToken}
+                            stripeKey="pk_test_51HafAWAT5LLTROXbf1tiSBHidN7cWkQfvoSpo9GsOUchvAevblbK8ftOOrKqUlhixMnFh3tumH6zraAdelSwWqCF00ppKydIyl"
+                            name=""
+                            description=""
+                            image=""
+                            panelLabel="Donate"
+                            amount={2500} // cents
+                            currency="USD"
+                            locale="auto"
+                            zipCode={false}
+                            billingAddress={true}
+                        />
+                            {/* <StripeCheckout
+                                token={handleToken}
                                 stripeKey="pk_test_51HafAWAT5LLTROXbf1tiSBHidN7cWkQfvoSpo9GsOUchvAevblbK8ftOOrKqUlhixMnFh3tumH6zraAdelSwWqCF00ppKydIyl"
-                                // token={handleToken}
-                                billingAddress
-                                shippingAddress
                                 amount={totalPrice * 100}
                                 name="All products"
                             >
-                            </StripeCheckout>        
+                            </StripeCheckout>         */}
                         </div>
                     </div>
                 </div>

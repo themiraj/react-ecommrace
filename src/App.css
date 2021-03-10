@@ -230,34 +230,3 @@ header{
   color: rgba(187,58,38,1);
   cursor: pointer; 
 }
-.cart-summary{
-  width: 25%;
-  padding: 20px;
-}
-.cart-summary .summary h3{
-  border-bottom: 1px solid #000;
-  padding-bottom: 15px;
-
-}
-.cart-summary .summary .total-item,
-.cart-summary .summary .total-price-section{
-  display: flex;
-  justify-content: space-between;
-  padding:15px 0;
-}
-.items{}
-.item-count,
-.item-price{
-  color: var(--mainColor);
-  font-size: 20px;
-  font-weight: 600;
-}
-.cart-summary .summary .total-price-section{
-
-} 
-.just-title{
-
-}
-.item-price{
-
-}
